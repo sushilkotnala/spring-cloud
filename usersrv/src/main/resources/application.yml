@@ -1,0 +1,14 @@
+server:
+  port:8092
+
+spring:
+  application:
+    name: userservice
+  config:
+    import: configserver:http://localhost:8888
+
+  cloud:
+    config:
+      discovery:
+        serviceId: configserver
+      fai1l-fast: true

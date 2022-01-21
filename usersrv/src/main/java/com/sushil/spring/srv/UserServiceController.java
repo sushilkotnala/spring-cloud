@@ -1,0 +1,29 @@
+package com.sushil.spring.srv;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class UserServiceController {
+    @Autowired
+    private Environment env;
+
+    Logger log = LoggerFactory.getLogger(UserServiceController.class);
+
+    @RequestMapping(value = "/user/listUsers", method = RequestMethod.GET)
+    public User orders() {
+
+        log.info("Name >>>>> " + env.getProperty("name"));
+
+        User user = new User();
+        user.setUserid(745);
+        user.setName("Sushil");
+
+       return user;
+    }
+}

@@ -1,0 +1,21 @@
+server:
+  port:
+    8070
+
+spring:
+  application:
+    name: spring-cloud-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: orderservice
+          uri: lb://orderservice
+          predicates:
+            - Path=/order/**
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8090/eureka/

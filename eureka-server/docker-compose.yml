@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  eureka:
+    image: eureka-server
+    container_name: eureka
+    ports:
+      - "8090:8090"
+    networks:
+      - ms
+
+  cloud-gateway:
+    image: microsrv/cloud-gateway
+    container_name: cloud-gateway
+    ports:
+      - "8051:8070"
+    networks:
+      - ms
+
+networks:
+  default:
+    external:
+      name: ms

@@ -1,0 +1,13 @@
+server:
+  port: 8091
+
+spring:
+  application:
+    name: orderservice
+  config:
+    import: configserver:http://localhost:8888
+  cloud:
+    config:
+      discovery:
+        serviceId: configserver
+      fail-fast: true
